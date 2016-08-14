@@ -21,7 +21,7 @@ if(!localStorage.getItem('name')) {
   setUserName();
 } else {
   var storedName = localStorage.getItem('name');
-  myPhrase.textContent = 'Cuddling with ' + storedName;
+  myPhrase.textContent = 'cuddling with ' + storedName;
 }
 myButton.onclick = function() {
   setUserName();
