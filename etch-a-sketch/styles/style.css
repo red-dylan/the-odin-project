@@ -1,3 +1,11 @@
+body {
+	text-align: center;	
+}
+button {
+	margin: 60px auto 0;
+	position: relative;	
+}
+
 .grid-square {
 	background-color: white;
 	width: 30px;
@@ -11,7 +19,7 @@
 	background-color: #666;
 }
 #grid {
-	margin: 75px auto;
+	margin: 20px auto;
 	height:480px;
 	width: 480px;
 	border: 2px solid #666;

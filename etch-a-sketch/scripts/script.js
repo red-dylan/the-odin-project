@@ -12,4 +12,7 @@ $(document).ready(function() {
 		$(this).addClass("etched");
 	})
 
+	$("#clear").click(function() {
+		$(".grid-square").removeClass("etched");
+	})
 })
