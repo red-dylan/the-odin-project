@@ -8,23 +8,6 @@ $(document).ready(function() {
 	drawGrid();
 	//clear button clears drawing grid
 	$("#clear").click(clearGrid);
-	/*
-	//set isDraw to true or false based on mousedown/up
-	$(".grid-square").mousedown(function(e) {
-		e.preventDefault();
-		isDraw = false;
-	});
-
-	$(".grid-square").mouseup(function() {
-		isDraw = true;
-	});
-	//color square if true
-	$(".grid-square").hover(function() {
-		if (isDraw === true) {
-			$(this).addClass("etched");
-		}
-	});
-	*/
 });
 //function to draw grid
 function drawGrid() {
@@ -61,7 +44,7 @@ function drawGrid() {
 //function to clear grid and change resolution
 function clearGrid() {
 	//prompt user for grid resolution
-	gridPixels = prompt("How many pixels per side would you like in your new grid?", gridPixels);
+	gridPixels = prompt("How many pixels per side would you like your new grid to be?", gridPixels);
 	
 	//clear grid
 	$("#grid").remove();
