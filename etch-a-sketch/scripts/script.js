@@ -2,15 +2,23 @@ const GRID_DIMENSION = 480;
 var gridPixels = 16;
 var isDraw = true;
 var squareSize = 0;
+var curColor;
 
 $(document).ready(function() {
 	//Draw Grid
 	drawGrid();
+	//get value of selected color
+	$('select').change(function() {
+    	curColor = $(this).val();
+    	$("#selected-color").css("background-color", curColor);
+    });
 	//clear button clears drawing grid
 	$("#clear").click(clearGrid);
 });
 //function to draw grid
 function drawGrid() {
+	curColor = $("select").val();
+	console.log(curColor);
 	//calculate square size
 	squareSize = GRID_DIMENSION / gridPixels;
 	$("#container").append("<div id='grid'></div>");
@@ -33,11 +41,14 @@ function drawGrid() {
 
 	$(".grid-square").mouseup(function() {
 		isDraw = true;
+		$(this).addClass(curColor);
+		$("." + curColor).css("background-color", curColor);
 	});
 	//color square if true
 	$(".grid-square").hover(function() {
 		if (isDraw === true) {
-			$(this).addClass("etched");
+			$(this).addClass(curColor);
+		$("." + curColor).css("background-color", curColor);
 		}
 	});
 }
