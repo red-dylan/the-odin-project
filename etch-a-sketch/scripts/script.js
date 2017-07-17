@@ -3,14 +3,33 @@ var gridPixels = 16;
 var isDraw = true;
 var squareSize = 0;
 var curColor;
+var colorArray = [];
+var isRandom;
 
 $(document).ready(function() {
+	//create colorArray
+	$("#colorSelect > option").each(function() {
+	colorArray.push(this.value);
+	});
+	//remove last two elements: random and white
+	colorArray.pop();
+	colorArray.pop();
 	//Draw Grid
 	drawGrid();
-	//get value of selected color
+	//set isRandom, get value of selected color
 	$('select').change(function() {
-    	curColor = $(this).val();
-    	$("#selected-color").css("background-color", curColor);
+		if ($(this).val() === "random") {
+			isRandom = true;
+			$("#questionMark").removeClass();
+			$("#selected-color").css("background-color", "white");
+		}
+		else {
+			isRandom = false;
+	    	curColor = $(this).val();
+	    	$("#questionMark").removeClass().addClass("hidden");
+	    	$("#selected-color").css("background-color", curColor);
+    	}
+    	console.log(isRandom);	
     });
 	//clear button clears drawing grid
 	$("#clear").click(clearGrid);
@@ -18,7 +37,6 @@ $(document).ready(function() {
 //function to draw grid
 function drawGrid() {
 	curColor = $("select").val();
-	console.log(curColor);
 	//calculate square size
 	squareSize = GRID_DIMENSION / gridPixels;
 	$("#container").append("<div id='grid'></div>");
@@ -45,9 +63,13 @@ function drawGrid() {
 		$("." + curColor).css("background-color", curColor);
 	});
 	//color square if true
-	$(".grid-square").hover(function() {
-		if (isDraw === true) {
-			$(this).addClass(curColor);
+	$(".grid-square").mouseover(function() {
+		if (isDraw) {
+			if(isRandom){
+				curColor = colorArray[Math.floor(Math.random() * colorArray.length)];
+			}
+			$(this).removeClass().addClass("grid-square " + curColor);
+			
 		$("." + curColor).css("background-color", curColor);
 		}
 	});

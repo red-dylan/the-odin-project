@@ -8,8 +8,8 @@
 
 <body>
 	<div class="controls">
-		<div id="selected-color"></div>
-		<select>
+		<div id="selected-color"><span id="questionMark" class="hidden">?</span></div>
+		<select id="colorSelect">
 			<option value="red">Red<div class="red colors"></div></option>
 			<option value="orange">Orange</option>
 			<option value="yellow">Yellow</option>
@@ -21,10 +21,11 @@
 			<option value="gray">Gray</option>
 			<option value="brown">Brown</option>
 			<option value="white">White</option>
-
+			<option value="random">Random</option>
 		</select>
 		<button type="button" id="clear">Clear</button>
 	</div>
+	<p>Hold left mouse button to stop drawing</p>
 	<div id="container">
 	</div>	
 

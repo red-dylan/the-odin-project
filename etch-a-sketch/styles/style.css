@@ -1,5 +1,6 @@
 body {
-	text-align: center;	
+	text-align: center;
+		
 }
 #selected-color {
 	border: 1px solid gray;
@@ -9,19 +10,25 @@ body {
 	display: inline-block;
 	vertical-align: middle;
 }
+#questionMark {
+	position: relative;
+	top: -1px;
+	color: black;
+	font-family: sans-serif;
+}
+.hidden {
+	display: none;
+}
 select {
 	margin: 5px;
 }
-.colors {
-	height: 20px;
-	width: 20px;
-}
-
 button {
 	margin: 60px auto 0;
 	position: relative;	
 }
-
+p {
+	margin: 0;
+}
 .grid-square {
 	background-color: white;
 	display: inline-block;
@@ -32,9 +39,10 @@ button {
 }
 
 #grid {
-	margin: 20px auto;
+	margin: 5px auto;
 	height:480px;
 	width: 480px;
 	border: 2px solid #666;
 	position: relative;
 }
+
