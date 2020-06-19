@@ -8,12 +8,21 @@
 
     <script>
         
-        const gameChoices = ['rock', 'paper', 'scissors']
+        const gameChoices = [['rock', 0], ['paper', 1], ['scissors', 2]]
 
         function computerPlay() {
             let selection = Math.floor(Math.random() * gameChoices.length);
-            return gameChoices[selection]; 
+            return gameChoices[selection][0]; 
         }
+
+        function playRound(playerSelection, computerSelection) {
+
+        }
+
+        const playerSelection = 'rock';
+        const computerSelection = computerPlay();
+
+        console.log(playRound(playerSelection, computerSelection));
 
     </script>
 
