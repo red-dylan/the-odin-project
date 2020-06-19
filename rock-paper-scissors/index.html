@@ -9,14 +9,38 @@
     <script>
         
         const gameChoices = [['rock', 0], ['paper', 1], ['scissors', 2]]
+        const numChoices = gameChoices.length
 
         function computerPlay() {
-            let selection = Math.floor(Math.random() * gameChoices.length);
+            let selection = Math.floor(Math.random() * numChoices);
             return gameChoices[selection][0]; 
         }
 
-        function playRound(playerSelection, computerSelection) {
+        function getSelectionScore(selection){
+            let selectionScore = -1;
+            for (i = 0; i < numChoices; i++) {
+                if (selection == gameChoices[i][0]) {
+                    selectionScore = gameChoices[i][1];
+                    return selectionScore
+                }
+            }
+        }
 
+        function playRound(playerSelection, computerSelection) {
+            playerSelection = playerSelection.toLowerCase();
+            computerSelection = computerSelection.toLowerCase();
+            console.log("You select: " + playerSelection)
+            console.log("Computer selects: " + computerSelection)
+            let winner = ((getSelectionScore(playerSelection) - getSelectionScore(computerSelection)) % numChoices);
+            let outcome = '';
+            if (winner == 0) {
+                outcome = "tie!"
+            } else if (winner == -2 || winner == 1) {
+                outcome = "You Win! " + playerSelection + " beats " + computerSelection;
+            } else if (winner == -1 || winner == 2) {
+                outcome = "Computer Wins! " + computerSelection + " beats " + playerSelection;
+            } 
+            return outcome;
         }
 
         const playerSelection = 'rock';
