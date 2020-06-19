@@ -50,7 +50,7 @@
             const gameChoices = [['rock', 0], ['paper', 1], ['scissors', 2]]
             let score = [0, 0]
             for (let i = 0; i < numRounds; i++) {
-                let playerSelection = window.prompt('Rock, Paper, Scissors?').toLowerCase();
+                let playerSelection = window.prompt('Rock, Paper, Scissors?').toLowerCase().trim();
                 while (!/^(rock|paper|scissors)$/.test(playerSelection)) {
                     playerSelection = window.prompt('Invalid entry! Please enter:\nRock, Paper, or Scissors?').toLowerCase();
                 }
