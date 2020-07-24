@@ -6,6 +6,8 @@ const computerChoice = document.getElementById('computer-choice');
 const playerScoreboard = document.getElementById('player-score');
 const computerScoreboard = document.getElementById('computer-score');
 const scoreTitle = document.getElementById('score-title');
+const prevPlayer = document.getElementById('prev-player');
+const prevComputer = document.getElementById('prev-computer');
 
 function computerPlay(gameChoices) {
     let selection = Math.floor(Math.random() * gameChoices.length);
@@ -27,6 +29,12 @@ function playRound(playerSelection, gameChoices, score) {
     playerChoice.textContent = playerSelection;
     computerChoice.textContent = computerSelection;
 
+    setTimeout(() => {
+        getScore(playerSelection, computerSelection, gameChoices, score);
+    }, 1000);
+}
+
+function getScore(playerSelection, computerSelection, gameChoices, score) {
     let result =
         (getSelectionScore(playerSelection, gameChoices) -
             getSelectionScore(computerSelection, gameChoices)) %
@@ -49,6 +57,15 @@ function playRound(playerSelection, gameChoices, score) {
     } else if (score[1] === 5) {
         scoreTitle.textContent = 'COMPUTER WINS!';
     }
+
+    resetChoice();
+}
+
+function resetChoice() {
+    prevPlayer.textContent = playerChoice.textContent;
+    prevComputer.textContent = computerChoice.textContent;
+    playerChoice.textContent = '';
+    computerChoice.textContent = '';
 }
 
 function playGame() {
